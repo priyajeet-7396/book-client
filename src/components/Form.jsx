@@ -49,7 +49,7 @@ const Form = ({ onFormSubmit }) => {
           />
           <button
             type="submit"
-            className={`bg-${isSubmitting ? 'bg-cyan-600' : 'blue-900'} text-${isSubmitting ? 'blue-900' : 'white'} p-2 rounded w-64 sm:w-full`}
+            className={`bg-blue-900 text-white p-2 rounded w-64 sm:w-full`}
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Submitting...' : 'Submit'}
