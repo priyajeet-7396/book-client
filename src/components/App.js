@@ -65,18 +65,17 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>My Book List</h1>
+    <div className="bg-gradient-to-b from-black to-gray-800 min-h-screen text-white">
+      <h1 className="text-center text-blue-400 font-bold  text-4xl sm:text-5xl pt-8 ">
+        My Book List 📚
+      </h1>
       {jsonData && jsonData.books && (
-        <Table books={jsonData.books}
-        deleteItem = {deleteItem}
-         />
+        <Table books={jsonData.books} deleteItem={deleteItem} />
       )}
-      <Form 
-        onFormSubmit={handleFormSubmit}
-      />
+      <Form onFormSubmit={handleFormSubmit} />
     </div>
   );
+  
 }
 
 export default App;
