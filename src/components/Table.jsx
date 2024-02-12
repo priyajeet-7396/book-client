@@ -20,7 +20,7 @@ function Table({ books, deleteItem }) {
             <td className="py-2 px-4">
               <button
                 onClick={() => deleteItem(book_id)}
-                className="text-white bg-red-500 px-2 py-1 rounded"
+                className="text-white bg-red-700 px-2 py-1 rounded"
               >
                 Delete
               </button>
