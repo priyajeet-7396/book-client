@@ -30,26 +30,26 @@ const Form = ({ onFormSubmit }) => {
     <>
       <form onSubmit={handleSubmit} className="mx-auto my-4 max-w-md pt-9">
         <div className="flex flex-col items-center">
-          <h1 className="text-blue-400 font-bold pb-3">Add more</h1>
+          <h1 className="text-green-900 font-bold pb-3">Add Task </h1>
           <input
             type="text"
             name="name"
-            placeholder="Name of the book"
+            placeholder="Write Task"
             value={data.name}
             onChange={handleChange}
-            className="mb-2 p-2 border rounded bg-slate-900 text-white w-64 sm:w-full "
+            className="mb-2 p-2 border rounded bg-white text-lime-950 w-64 sm:w-full "
           />
           <input
             type="text"
             name="price"
-            placeholder="Price of the book"
+            placeholder="Project"
             value={data.price}
             onChange={handleChange}
-            className="mb-2 p-2 border rounded bg-slate-900 text-white w-64 sm:w-full"
+            className="mb-2 p-2 border rounded bg-white text-lime-950 w-64 sm:w-full"
           />
           <button
             type="submit"
-            className={`bg-blue-900 text-white p-2 rounded w-64 sm:w-full`}
+            className={`bg-lime-900 text-white p-2 rounded w-64 sm:w-full`}
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Submitting...' : 'Submit'}

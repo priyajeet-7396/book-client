@@ -60,7 +60,7 @@ const Auth = ({fetchData}) => {
     return (
         <div >
         <div class="max-w-md mx-auto p-8  pt-10 rounded-md shadow-md">
-        <h1 class="text-center text-blue-400 font-bold text-4xl mb-8">Book App 📚</h1>
+        <h1 class="text-center text-green-900 font-bold text-4xl mb-8">Synergy Tasker </h1>
         <form class="flex flex-col" onSubmit={submitForm}>
             {btnSignUp && (
                 <input
@@ -69,7 +69,7 @@ const Auth = ({fetchData}) => {
                     value={user.name}
                     onChange={handleChange}
                     placeholder="Enter your name"
-                    class="mb-4 p-2 rounded-md border text-blue-800 focus:outline-none focus:border-blue-400"
+                    class="mb-4 p-2 rounded-md border text-green-900 focus:outline-none focus:border-blue-400"
                 />
             )}
             <input
@@ -78,7 +78,7 @@ const Auth = ({fetchData}) => {
                 value={user.email}
                 onChange={handleChange}
                 placeholder="Email"
-                class="mb-4 p-2 rounded-md border text-blue-800 focus:outline-none focus:border-blue-400"
+                class="mb-4 p-2 rounded-md border text-green-900 focus:outline-none focus:border-blue-400"
             />
             <input
                 type="password"
@@ -86,22 +86,22 @@ const Auth = ({fetchData}) => {
                 value={user.password}
                 onChange={handleChange}
                 placeholder="Password"
-                class="mb-4 p-2 rounded-md border text-blue-800 focus:outline-none focus:border-blue-400"
+                class="mb-4 p-2 rounded-md border text-green-900 focus:outline-none focus:border-blue-400"
             />
             {btnSignUp && (
                 <input
                     type="password"
                     name="confirmPassword"
                     placeholder="Confirm Password"
-                    class="mb-4 p-2 rounded-md border text-blue-800 focus:outline-none focus:border-blue-400"
+                    class="mb-4 p-2 rounded-md border text-green-900 focus:outline-none focus:border-blue-400"
                 />
             )}
-            <button type="submit" class="bg-indigo-900 text-white font-bold py-2 rounded-md">
+            <button type="submit" class="bg-lime-800 text-white font-bold py-2 rounded-md">
                 {btnSignUp ? 'Sign Up' : 'Login'}
             </button>
         </form>
-        <p class="mt-4 "> {btnSignUp ? 'already have a account' : 'new user'} </p>
-        <button onClick={changeBtn} class="text-blue-400 hover:underline  focus:outline-none">
+        <p class="mt-4 text-green-900 "> {btnSignUp ? 'already have a account' : 'new user'} </p>
+        <button onClick={changeBtn} class="text-green-900 hover:underline  focus:outline-none">
             {btnSignUp ? 'Login' : 'Sign Up'}
         </button>
     </div>

@@ -3,6 +3,7 @@ import { useCookies } from 'react-cookie';
 import Table from './Table';
 import Form from './Form';
 import Auth from './Auth';
+import Logo from './Logo';
 
 function App() {
   const [jsonData, setJsonData] = useState(null);
@@ -95,23 +96,24 @@ useEffect(() => {
 
 
   return (
-    <div className="bg-gradient-to-b from-black to-gray-800 min-h-screen text-white">
+    <div className="bg-gradient-to-b from-yellow-50 to-lime-50 min-h-screen text-white">
      
           <>
+          <Logo/>
           {!authToken && <Auth fetchData ={fetchData} />}
           {authToken && <>
            
-            <h1 className="text-center text-blue-400 font-bold text-4xl sm:text-5xl pt-8">
-              My Book List 📚
+            <h1 className="text-center text-green-700 font-bold text-4xl sm:text-5xl pt-8">
+              Tasker App
             </h1>
              <button 
-        className="absolute top-0 right-0 text-white bg-red-800 px-2 py-1 rounded"
+        className="absolute top-0 right-0 text-white bg-teal-950 px-2 py-1 rounded"
         onClick={signOut}
     >
         Sign Out
     </button>
             <p
-             className="text-center text-blue-400 font-bold text-1xl sm:text-2xl pt-8"
+             className="text-center text-lime-900 font-bold text-1xl sm:text-2xl pt-8"
             > welcome back {name}</p>
             {jsonData && jsonData.books && (
               <Table books={jsonData.books} deleteItem={deleteItem} />
