@@ -100,11 +100,19 @@ useEffect(() => {
           <>
           {!authToken && <Auth fetchData ={fetchData} />}
           {authToken && <>
-          <button onClick={signOut}>signOut</button>
+           
             <h1 className="text-center text-blue-400 font-bold text-4xl sm:text-5xl pt-8">
               My Book List 📚
             </h1>
-            <p> welcome back {name}</p>
+             <button 
+        className="absolute top-0 right-0 text-white bg-red-800 px-2 py-1 rounded"
+        onClick={signOut}
+    >
+        Sign Out
+    </button>
+            <p
+             className="text-center text-blue-400 font-bold text-1xl sm:text-2xl pt-8"
+            > welcome back {name}</p>
             {jsonData && jsonData.books && (
               <Table books={jsonData.books} deleteItem={deleteItem} />
             )}
