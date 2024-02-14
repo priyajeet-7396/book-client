@@ -40,7 +40,6 @@ const Auth = ({fetchData}) => {
                 setCookie('name', data.user.name, { path: '/' });
                 setCookie('email', data.user.email, { path: '/' });
                 console.log(cookies);
-
             }
             console.log('Received token from server:', data.token);
         
@@ -59,40 +58,55 @@ const Auth = ({fetchData}) => {
     };
 
     return (
-        <div>
-        <h1 className="text-center text-blue-400 font-bold text-4xl sm:text-5xl pt-8">
-              My Book List 📚
-            </h1>
-            <form onSubmit={submitForm}>
-               {btnSignUp &&
+        <div >
+        <div class="max-w-md mx-auto p-8  pt-10 rounded-md shadow-md">
+        <h1 class="text-center text-blue-400 font-bold text-4xl mb-8">Book App 📚</h1>
+        <form class="flex flex-col" onSubmit={submitForm}>
+            {btnSignUp && (
                 <input
-                    type='text'
-                    name='name'
+                    type="text"
+                    name="name"
                     value={user.name}
                     onChange={handleChange}
-                    placeholder='Enter your name'
+                    placeholder="Enter your name"
+                    class="mb-4 p-2 rounded-md border text-blue-800 focus:outline-none focus:border-blue-400"
                 />
-                } 
+            )}
+            <input
+                type="email"
+                name="email"
+                value={user.email}
+                onChange={handleChange}
+                placeholder="Email"
+                class="mb-4 p-2 rounded-md border text-blue-800 focus:outline-none focus:border-blue-400"
+            />
+            <input
+                type="password"
+                name="password"
+                value={user.password}
+                onChange={handleChange}
+                placeholder="Password"
+                class="mb-4 p-2 rounded-md border text-blue-800 focus:outline-none focus:border-blue-400"
+            />
+            {btnSignUp && (
                 <input
-                    type='email'
-                    name='email'
-                    value={user.email}
-                    onChange={handleChange}
-                    placeholder='Email'
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    class="mb-4 p-2 rounded-md border  focus:outline-none focus:border-blue-400"
                 />
-                <input
-                    type='password'
-                    name='password'
-                    value={user.password}
-                    onChange={handleChange}
-                    placeholder='Password'
-                />
-                {btnSignUp && <input type='password' name='confirmPassword' placeholder='Confirm Password' />}
-                <button type='submit'>{btnSignUp ? 'Sign Up' : 'Login'}</button>
-            </form>
-            <p>Click here for </p>
-            <button onClick={changeBtn}>{btnSignUp ? 'Login' : 'Sign Up'}</button>
-        </div>
+            )}
+            <button type="submit" class="bg-indigo-900 text-white font-bold py-2 rounded-md">
+                {btnSignUp ? 'Sign Up' : 'Login'}
+            </button>
+        </form>
+        <p class="mt-4 "> {btnSignUp ? 'already have a account' : 'new user'} </p>
+        <button onClick={changeBtn} class="text-blue-400 hover:underline  focus:outline-none">
+            {btnSignUp ? 'Login' : 'Sign Up'}
+        </button>
+    </div>
+    </div>
+    
     );
 };
 
