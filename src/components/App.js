@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { useCookies } from 'react-cookie';
 import Table from './Table';
 import Form from './Form';
+import Auth from './Auth';
 
 function App() {
   const [jsonData, setJsonData] = useState(null);
+  const [cookies, setCookie, removeCookie] = useCookies(null)
+ 
+  const name = cookies.name
+  const email = cookies.email
+  const authToken = cookies.AuthToken
+
+  console.log(name)
+  console.log(email)
+
+
 
 
   // funciton to add more data 
   const handleFormSubmit = async (formData) => {
     try {
-      const response = await fetch('https://demo-node-api-sigma.vercel.app/', {
+      const response = await fetch(`https://demo-node-api-sigma.vercel.app/?email=${email}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +45,12 @@ function App() {
   // fucntion to get all data 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://demo-node-api-sigma.vercel.app/');
+      const response = await fetch(`https://demo-node-api-sigma.vercel.app/?email=${email}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       const data = await response.json();
       setJsonData(data);
     } catch (error) {
@@ -60,22 +77,44 @@ function App() {
     }
   };
 
-  useEffect(() => {
+  const signOut = ()=> {
+    console.log("signout pressed")
+    removeCookie('email');
+    removeCookie('AuthToken');
+    removeCookie('email')
+    window.location.reload();
+}
+
+
+
+useEffect(() => {
+  if (authToken) {
     fetchData();
-  }, []);
+  }
+}, [authToken]);
+
 
   return (
     <div className="bg-gradient-to-b from-black to-gray-800 min-h-screen text-white">
-      <h1 className="text-center text-blue-400 font-bold  text-4xl sm:text-5xl pt-8 ">
-        My Book List 📚
-      </h1>
-      {jsonData && jsonData.books && (
-        <Table books={jsonData.books} deleteItem={deleteItem} />
-      )}
-      <Form onFormSubmit={handleFormSubmit} />
+     
+          <>
+          {!authToken && <Auth fetchData ={fetchData} />}
+          {authToken && <>
+          <button onClick={signOut}>signOut</button>
+            <h1 className="text-center text-blue-400 font-bold text-4xl sm:text-5xl pt-8">
+              My Book List 📚
+            </h1>
+            <p> welcome back {name}</p>
+            {jsonData && jsonData.books && (
+              <Table books={jsonData.books} deleteItem={deleteItem} />
+            )}
+            <Form onFormSubmit={handleFormSubmit} />
+          </> }
+           
+          </>
+ 
     </div>
   );
-  
 }
 
 export default App;
