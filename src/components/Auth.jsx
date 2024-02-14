@@ -22,6 +22,20 @@ const Auth = ({fetchData}) => {
     // handle form submit
     const submitForm = async (e) => {
         e.preventDefault();
+
+
+        if (btnSignUp && !user.name) {
+            alert('Please enter your name');
+            return;
+        }
+    
+        if (!user.email || !user.password) {
+            alert('Please enter both email and password');
+            return;
+        }
+
+
+        
         const endpoint = btnSignUp ? '/signup' : '/login'; 
         try {
             const response = await fetch(`https://demo-node-api-sigma.vercel.app${endpoint}`, {
