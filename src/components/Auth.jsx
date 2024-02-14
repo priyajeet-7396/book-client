@@ -93,7 +93,7 @@ const Auth = ({fetchData}) => {
                     type="password"
                     name="confirmPassword"
                     placeholder="Confirm Password"
-                    class="mb-4 p-2 rounded-md border  focus:outline-none focus:border-blue-400"
+                    class="mb-4 p-2 rounded-md border text-blue-800 focus:outline-none focus:border-blue-400"
                 />
             )}
             <button type="submit" class="bg-indigo-900 text-white font-bold py-2 rounded-md">
