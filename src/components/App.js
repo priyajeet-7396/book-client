@@ -4,6 +4,7 @@ import Table from './Table';
 import Form from './Form';
 import Auth from './Auth';
 import Logo from './Logo';
+import axios from 'axios';
 
 function App() {
   const [jsonData, setJsonData] = useState(null);
@@ -44,39 +45,82 @@ function App() {
   
 
   // fucntion to get all data 
+  // using normal fetch function
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch(`https://demo-node-api-sigma.vercel.app/?email=${email}`, {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     });
+  //     const data = await response.json();
+  //     setJsonData(data);
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+  // };
+
+
+  // using axios 
   const fetchData = async () => {
-    try {
-      const response = await fetch(`https://demo-node-api-sigma.vercel.app/?email=${email}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const data = await response.json();
-      setJsonData(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+      try {
+        const response = await axios.get(`https://demo-node-api-sigma.vercel.app/`,{
+          params: {email},
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const { data } = response;
+        setJsonData(data);
+
+      } catch (err) {
+        console.error('Error fetching data:', err);
+      }
   };
 
+
+
 //  function to delete item
-  const deleteItem = async (id) => {
-    try {
-      const response = await fetch(`https://demo-node-api-sigma.vercel.app/${id}`, {
-        method: 'DELETE',
-      });
+
+// using fetch data 
+
+  // const deleteItem = async (id) => {
+  //   try {
+  //     const response = await fetch(`https://demo-node-api-sigma.vercel.app/${id}`, {
+  //       method: 'DELETE',
+  //     });
   
-      if (response.ok) {
-        const data = await response.json();
-        console.log(`Item with ID ${id} deleted successfully`, data);
-        fetchData(); // Assuming fetchData is a function that refetches the data after deletion
-      } else {
-        console.error(`Failed to delete item with ID ${id}`);
-      }
-    } catch (err) {
-      console.error(err);
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       console.log(`Item with ID ${id} deleted successfully`, data);
+  //       fetchData();
+  //     } else {
+  //       console.error(`Failed to delete item with ID ${id}`);
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
+  
+  // using axios 
+const deleteItem = async (id) => {
+  try {
+    const response = await axios.delete(`https://demo-node-api-sigma.vercel.app/${id}`);
+    if (response.status === 200) {
+      const { data } = response;
+      console.log(`Item with ID ${id} deleted successfully`, data);
+      fetchData();
+    } else {
+      console.error(`Failed to delete item with ID ${id}`);
     }
-  };
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 
   const signOut = ()=> {
     console.log("signout pressed")
