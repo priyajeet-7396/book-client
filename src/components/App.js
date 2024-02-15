@@ -45,7 +45,10 @@ function App() {
   
 
   // fucntion to get all data 
+
   // using normal fetch function
+
+  
   // const fetchData = async () => {
   //   try {
   //     const response = await fetch(`https://demo-node-api-sigma.vercel.app/?email=${email}`, {
@@ -60,6 +63,7 @@ function App() {
   //     console.error('Error fetching data:', error);
   //   }
   // };
+
 
 
   // using axios 
@@ -104,7 +108,7 @@ function App() {
   //   }
   // };
 
-  
+
   // using axios 
 const deleteItem = async (id) => {
   try {
